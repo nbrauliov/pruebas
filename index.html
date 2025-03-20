@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos del Sensor</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        h1 { color: #333; }
+        #data { font-size: 24px; font-weight: bold; color: #007bff; }
+    </style>
+</head>
+<body>
+    <h1>Página de pruebas</h1>
+    <p>Último valor medido:</p>
+    <p id="data">Esperando datos...</p>
+
+    <script>
+        async function obtenerDatos() {
+            try {
+                const response = await fetch("https://raw.githubusercontent.com/TU_USUARIO/esp8266-datos/main/datos.json");
+                const data = await response.json();
+                document.getElementById("data").innerText = `Distancia: ${data.sensor1} cm`;
+            } catch (error) {
+                console.error("Error obteniendo datos:", error);
+            }
+        }
+
+        // Actualizar cada 5 segundos
+        setInterval(obtenerDatos, 5000);
+        obtenerDatos();
+    </script>
+</body>
+</html>
