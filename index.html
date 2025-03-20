@@ -18,7 +18,7 @@
     <script>
         async function obtenerDatos() {
             try {
-                const response = await fetch("https://raw.githubusercontent.com/TU_USUARIO/esp8266-datos/main/datos.json");
+                const response = await fetch("https://raw.githubusercontent.com/nbrauliov/pruebas/main/datos.json");
                 const data = await response.json();
                 document.getElementById("data").innerText = `Distancia: ${data.sensor1} cm`;
             } catch (error) {
